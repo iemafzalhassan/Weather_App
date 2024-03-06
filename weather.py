@@ -1,9 +1,10 @@
-from tkinter import *
-import tkinter as tk
-from geopy.geocoders import Nominatim
-from tkinter import ttk,messagebox
-from timezonefinder import TimezoneFinder
-from datetime import *
 import requests
-import pytz
-from PIL import Image, ImageTk
+from bs4 import BeautifulSoup
+
+search = " Weather in Maharashtra "
+url = f"https://www.google.com/search?&q={search}"
+r = requests.get(url)
+s = BeautifulSoup(r.text, "html.parser")
+update = s.find("div", class_="BNeawe").text
+print(update)
+
